@@ -1,0 +1,25 @@
+<div class="todolist">
+    <h2 class="header">任务清单</h2>
+
+
+    <h3> 新增任务:</h3>
+    <div class="inputstyle">
+        <input id="addinput" type="text" [(ngModel)]="keywords" (keyup)="doadd($event)">
+        <button (click)="doaddbtn()">新增</button>
+    </div>
+
+    <h3>待办任务:</h3>
+
+    <li *ngFor="let item of todoList;let key = index" [hidden]='item.status==1'>
+        <input type="checkbox" [(ngModel)]="item.status" (change)='checkchange()'> {{item.title}} <button
+            (click)="deleteitem(key)">删除</button>
+    </li>
+
+    <h3>已完成任务:</h3>
+
+    <li class="done" *ngFor="let item of todoList;let key = index" [hidden]='item.status==0'>
+        <input type="checkbox" [(ngModel)]="item.status" (change)='checkchange()'> {{item.title}} <button
+            (click)="deleteitem(key)">删除</button>
+    </li>
+
+</div>
